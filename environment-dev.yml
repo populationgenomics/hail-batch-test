@@ -1,6 +1,8 @@
 name: env-dev
 
 channels:
+  - cpg
+  - bioconda
   - conda-forge
 
 dependencies:
