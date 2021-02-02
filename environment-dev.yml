@@ -6,3 +6,4 @@ channels:
 dependencies:
   - pre-commit
   - pylint
+  - hail=0.2.61.devd9fcfb5
