@@ -7,10 +7,9 @@ backend = hb.ServiceBackend(
     billing_project=os.getenv('HAIL_BILLING_PROJECT'), bucket=os.getenv('HAIL_BUCKET')
 )
 
-batch = hb.Batch(backend=backend, name='hello world')
+b = hb.Batch(backend=backend, name='hello world')
 
-job = batch.new_job(name='hello')
-job.image('australia-southeast1-docker.pkg.dev/analysis-runner/images/ubuntu:20.04')
-job.command('echo "hello world"')
-
-batch.run()
+ref = b.read_input('gs://gcp-public-data--gnomad/release/3.1/vcf/genomes/gnomad.genomes.v3.1.sites.chrM.reduced_annotations.tsv')
+j = b.new_job('Test job')
+j.command(f'ls {ref}')
+b.run()
