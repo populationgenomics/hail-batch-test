@@ -11,5 +11,6 @@ b = hb.Batch(backend=backend, name='hello world')
 
 ref = b.read_input('gs://gcp-public-data--gnomad/release/3.1/vcf/genomes/gnomad.genomes.v3.1.sites.chrM.reduced_annotations.tsv')
 j = b.new_job('Test job')
+j.image('australia-southeast1-docker.pkg.dev/analysis-runner/images/ubuntu:20.04')
 j.command(f'ls {ref}')
 b.run()
